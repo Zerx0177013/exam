@@ -1,0 +1,8 @@
+Base de donnees:
+    -creation des tables
+    -insertion des donnees
+
+Pages:
+    index: (login et inscription)
+        -fonctionnalites:
+            -formulaire de connexion
