@@ -29,7 +29,7 @@ function inscription ($email,$mdp,$nom,$date,$ville,$genre){
     return mysqli_query($bdd,$query);
 }
 
-function getListeObjet($id_categorie, $nom, $disponible_seulement){
+function getListeObjet($id_categorie, $nom = null, $disponible_seulement = false){
     $bdd = connexion();
     $conditions = [];
 
@@ -39,7 +39,6 @@ function getListeObjet($id_categorie, $nom, $disponible_seulement){
     }
 
     if ($nom !== null && $nom !== '') {
-        $nom = mysqli_real_escape_string($bdd, $nom);
         $conditions[] = "o.nom_objet LIKE '%$nom%'";
     }
 
