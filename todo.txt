@@ -1,4 +1,4 @@
-Base de donnees:
+Base de donnees: ok
     -creation des tables
     -insertion des donnees
 
@@ -6,3 +6,5 @@ Pages:
     index: (login et inscription)
         -fonctionnalites:
             -formulaire de connexion
+            -page de traitement
+            -fonction de gestion         

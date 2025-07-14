@@ -2,7 +2,7 @@
 function connexion() {  
     static $bdd = null;
     if ($bdd === null) {
-        $bdd = mysqli_connect("localhost", "root", "", "");
+        $bdd = mysqli_connect("localhost", "root", "", "final_project");
         // $bdd = mysqli_connect("localhost", "ETU003918", "s7mSG5Zt", "");
         // $bdd = mysqli_connect("localhost", "ETU004014", "MHV18XnP", "");
 
