@@ -29,14 +29,29 @@ function inscription ($email,$mdp,$nom,$date,$ville,$genre){
     return mysqli_query($bdd,$query);
 }
 
-function getListeObjet(){
-    $bdd= connexion();
-    $query = "SELECT * FROM objet ORDER BY nom_objet ASC";
+function getListeObjet($id_categorie){
+    $bdd = connexion();
+    $where = "";
+
+    if ($id_categorie !== null ) {
+        $id_categorie = (int)$id_categorie; 
+        $where = "WHERE o.id_categorie = $id_categorie";
+    }
+
+    $query = "SELECT o.id_objet, o.nom_objet, o.id_categorie, e.date_retour
+              FROM objet o
+              LEFT JOIN emprunt e ON o.id_objet = e.id_objet
+              $where
+              ORDER BY o.nom_objet";
+
     return mysqli_query($bdd, $query);
 }
 
-function getProprio($id_objet){
-    
+
+function getCategories() {
+    $bdd = connexion();
+    $query = "SELECT * FROM categorie_objet";
+    return mysqli_query($bdd, $query);
 }
 
 ?>

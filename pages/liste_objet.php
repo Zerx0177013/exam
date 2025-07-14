@@ -1,20 +1,78 @@
 <?php
 include '../include/function.php';
 session_start();
-$liste = getListeObjet();
+
+if (isset($_GET['categorie']) && $_GET['categorie'] !== '') {
+    $id_categorie = $_GET['categorie'];
+} else {
+    $id_categorie = null;
+}
+
+$liste = getListeObjet($id_categorie);
+
+$result_cat = getCategories();
+$categories = [];
+while ($row = mysqli_fetch_assoc($result_cat)) {
+    $categories[] = $row;
+}
 ?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des objets</title>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-    <?php while($ob = (mysqli_fetch_assoc($liste))) { ?>
-        <p>Nom: <?php echo $ob['nom_objet'] ?></p>
-        
-    <?php }?>
 
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Liste des objets</h1>
+
+        <form method="get" class="mb-4">
+            <div class="row justify-content-center g-2 align-items-center">
+                <div class="col-md-6">
+                    <select name="categorie" class="form-select">
+                        <option value="">-- Toutes les catégories --</option>
+                        <?php foreach ($categories as $c): ?>
+                            <option value="<?= $c['id_categorie'] ?>" <?php
+                              if ($c['id_categorie'] == (int) $id_categorie) {
+                                  echo 'selected';
+                              }
+                              ?>>
+                            <?= htmlspecialchars($c['nom_categorie']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Filtrer</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <?php while ($ob = mysqli_fetch_assoc($liste)): ?>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($ob['nom_objet']) ?></h5>
+                            <?php if (!empty($ob['date_retour'])): ?>
+                                <span class="badge bg-danger">Emprunté jusqu'au
+                                    <?= htmlspecialchars($ob['date_retour']) ?></span>
+                            <?php else: ?>
+                                <span class="badge bg-success">Disponible</span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        </div>
+    </div>
 </body>
+
 </html>
