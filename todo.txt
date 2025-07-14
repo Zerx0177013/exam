@@ -3,8 +3,25 @@ Base de donnees: ok
     -insertion des donnees
 
 Pages:
-    index: (login et inscription)
+    index: (login et inscription) ok
         -fonctionnalites:
-            -formulaire de connexion
+            -formulaire de connexion 
             -page de traitement
-            -fonction de gestion         
+            -fonction de gestion
+	-affichage:
+	    -card
+	    -Form-control
+    liste: ok
+        -fonctionnalites:
+                -fonction de gestion
+                -formulaire de filtre  
+        -affichage:
+            -card
+            -Form-control
+    uploadimage:
+        -fonctionnalites:
+                -faire un formulaire
+                -enovyer vers une apge de traitement
+                -faire une fonction de gestion 
+                
+    

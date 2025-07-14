@@ -43,7 +43,7 @@ while ($row = mysqli_fetch_assoc($result_cat)) {
                                   echo 'selected';
                               }
                               ?>>
-                            <?= htmlspecialchars($c['nom_categorie']) ?>
+                                <?= htmlspecialchars($c['nom_categorie']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -55,10 +55,18 @@ while ($row = mysqli_fetch_assoc($result_cat)) {
             </div>
         </form>
 
+        <a href="uploadImage.php">Ajouter objet</a>
+
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <?php while ($ob = mysqli_fetch_assoc($liste)): ?>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
+                        <?php if (!empty($ob['nom_image'])): ?>
+                            <img src="../uploads/<?= htmlspecialchars($ob['nom_image']) ?>" class="card-img-top"
+                                alt="<?= htmlspecialchars($ob['nom_objet']) ?>">
+                        <?php else: ?>
+                            <img src="../uploads/placeholder.png" class="card-img-top" alt="Image non disponible">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($ob['nom_objet']) ?></h5>
                             <?php if (!empty($ob['date_retour'])): ?>
