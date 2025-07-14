@@ -29,7 +29,7 @@ function inscription ($email,$mdp,$nom,$date,$ville,$genre){
     return mysqli_query($bdd,$query);
 }
 
-function getListeObjet($id_categorie, $nom = null, $disponible_seulement = false){
+function getListeObjet($id_categorie, $nom, $disponible_seulement){
     $bdd = connexion();
     $conditions = [];
 
