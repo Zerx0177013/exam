@@ -87,6 +87,11 @@ function addImageToObjet($id_objet, $nom_image, $bdd) {
     return mysqli_query($bdd, $query);
 }
 
+function justAddImage($id_objet, $nom_image) {
+    $bdd = connexion();
+    $query = "INSERT INTO final_project_images_objet (id_objet, nom_image) VALUES ($id_objet, '$nom_image')";
+    return mysqli_query($bdd, $query);
+}
 function getNomObjet($id_objet) {
     $bdd = connexion();
     $query = "SELECT nom_objet FROM final_project_objet WHERE id_objet = $id_objet";
@@ -145,6 +150,13 @@ function getNombreObjetsByMembre($id_membre) {
     $result = mysqli_query($bdd, $query);
     $row = mysqli_fetch_assoc($result);
     return $row['total'];
+}
+
+function emprunterObjet($id_objet, $id_membre, $date_retour) {
+    $bdd = connexion();
+    $query = "INSERT INTO final_project_emprunt (id_objet, id_membre, date_emprunt, date_retour) 
+              VALUES ($id_objet, $id_membre, CURDATE(), '$date_retour')";
+    return mysqli_query($bdd, $query);
 }
 
 ?>

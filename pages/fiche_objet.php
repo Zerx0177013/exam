@@ -21,7 +21,7 @@ $objet = getHistoriqueObjetById($id_objet);
 
         <?php foreach (getImageObjetById($id_objet) as $img) { ?>
             <div class="media-card">
-                <img src="../assets/pics/<?= $img['nom_image'] ?>" alt="Imgage non disponible">
+                <img src="../assets/pics/<?= $img['nom_image'] ?>" alt="Non Dispo"></a>
             <?php } ?>
 
             <?php while ($histo = mysqli_fetch_assoc($objet)) {
@@ -37,7 +37,7 @@ $objet = getHistoriqueObjetById($id_objet);
                 </div>
             <?php  } ?>
 
-
+            <a href="Ajouter.php?id_image=<?php echo $id_objet ?>">Ajouter plus d'Image</a>
             <a href="liste_objet.php" class="btn btn-primary">Retour</a>
     </div>
 
