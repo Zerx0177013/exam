@@ -49,7 +49,6 @@ CREATE TABLE final_project_emprunt(
     FOREIGN KEY(id_membre) REFERENCES final_project_membre(id_membre)
 );
 
-
 INSERT INTO final_project_membre (nom , date_de_naissance, genre, email, ville, mdp, image_profil) 
 VALUES ("Rohan", "2007-01-30", 'M', "rohan@gmail.com", "Tana", "rohan", "placeholder"),
         ("Ovy", "2007-03-30", 'M', "ovy@gmail.com", "Tana", "ovy", "placeholder"),

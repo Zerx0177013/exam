@@ -92,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result_cat)) {
                         </a>
 
                         <div class="card-body d-flex flex-column">
-                            <a href="fiche_objet.php?id=<?= $ob['id_objet'] ?>"
+                            <a href="fiche_membre.php?id=<?= $ob['id_membre'] ?>"
                                 class="text-decoration-none text-dark flex-grow-1">
                                 <h5 class="card-title text-truncate" title="<?= htmlspecialchars($ob['nom_objet']) ?>">
                                     <?= htmlspecialchars($ob['nom_objet']) ?>

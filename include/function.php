@@ -159,4 +159,18 @@ function emprunterObjet($id_objet, $id_membre, $date_retour) {
     return mysqli_query($bdd, $query);
 }
 
+function getObjetNonRertourner($id_membre)  {
+    $bdd = connexion();
+    $query = "SELECT * FROM final_project_emprunt where id_membre = $id_membre AND date_emprunt IS NOT NULL AND date_retour IS NULL";
+
+    return mysqli_query($bdd, $query);
+}
+
+function rendreUnObjet($id_objet) {
+    $bdd = connexion();
+    $query = "UPDATE final_project_emprunt SET date_retour = NOW() WHERE id_objet = $id_objet AND AND date_retour IS NULL";
+    
+    return mysqli_query($bdd, $query);  
+}
+
 ?>
