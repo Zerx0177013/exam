@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 function get_info_user($email,$mdp) {
     $bdd= connexion();
-    $query = "SELECT * FROM final_project_final_project_membre where mdp='$mdp' and email='$email'";
+    $query = "SELECT * FROM final_project_membre where mdp='$mdp' and email='$email'";
 
     return mysqli_query($bdd,$query);
 }
@@ -14,7 +14,7 @@ function get_info_user($email,$mdp) {
 
 function verif_compte_exist ($email,$mdp) {
     $bdd= connexion();
-    $query = "SELECT * FROM final_project_final_project_membre where mdp='$mdp' and email='$email'";
+    $query = "SELECT * FROM final_project_membre where mdp='$mdp' and email='$email'";
 
     if (mysqli_num_rows( mysqli_query($bdd,$query)) > 0) {
         return true;
@@ -23,7 +23,7 @@ function verif_compte_exist ($email,$mdp) {
 }
 function inscription ($email,$mdp,$nom,$date,$ville,$genre){
     $bdd= connexion();
-    $query = "INSERT INTO final_project_final_project_membre (nom , date_de_naissance, genre, email, ville, mdp, image_profil) 
+    $query = "INSERT INTO final_project_membre (nom , date_de_naissance, genre, email, ville, mdp, image_profil) 
     VALUES ('$nom', '$date', '$genre', '$email', '$ville', '$mdp', null)";
 
     return mysqli_query($bdd,$query);
@@ -53,8 +53,8 @@ function getListeObjet($id_categorie, $nom, $disponible_seulement){
     }
 
     $query = "SELECT o.id_objet, o.nom_objet, o.id_categorie, e.date_retour
-              FROM final_project_final_project_objet o
-              LEFT JOIN final_project_final_project_emprunt e ON o.id_objet = e.id_objet
+              FROM final_project_objet o
+              LEFT JOIN final_project_emprunt e ON o.id_objet = e.id_objet
               $where
               ORDER BY o.nom_objet";
 
@@ -64,7 +64,7 @@ function getListeObjet($id_categorie, $nom, $disponible_seulement){
 
 function getCategories() {
     $bdd = connexion();
-    $query = "SELECT * FROM final_project_final_project_categorie_objet";
+    $query = "SELECT * FROM final_project_categorie_objet";
     return mysqli_query($bdd, $query);
 }
 

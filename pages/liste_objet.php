@@ -81,9 +81,9 @@ while ($row = mysqli_fetch_assoc($result_cat)) {
                     <a href="fiche_objet.php?id=<?= $ob['id_objet'] ?>" class="text-decoration-none text-dark">
                         <div class="card h-100 shadow-sm">
                             <?php if (!empty($ob['nom_image'])): ?>
-                                <img src="../uploads/<?= htmlspecialchars($ob['nom_image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($ob['nom_objet']) ?>">
+                                <img src="../assets/pics/<?= htmlspecialchars($ob['nom_image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($ob['nom_objet']) ?>">
                             <?php else: ?>
-                                <img src="../uploads/placeholder.png" class="card-img-top" alt="Image non disponible">
+                                <img src="../assets/pics/placeholder.png" class="card-img-top" alt="Image non disponible">
                             <?php endif; ?>
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($ob['nom_objet']) ?></h5>
