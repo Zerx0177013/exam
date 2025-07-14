@@ -14,12 +14,10 @@ create TABLE final_project_membre(
 
 
 create TABLE final_project_categorie_objet(
-create TABLE final_project_categorie_objet(
     id_categorie INT AUTO_INCREMENT PRIMARY KEY,
     nom_categorie VARCHAR(100)
 );
 
-create TABLE final_project_objet (
 create TABLE final_project_objet (
     id_objet  INT AUTO_INCREMENT PRIMARY KEY,
     nom_objet VARCHAR(100),
@@ -32,7 +30,6 @@ create TABLE final_project_objet (
 );
 
 CREATE TABLE final_project_images_objet(
-CREATE TABLE final_project_images_objet(
     id_image INT AUTO_INCREMENT PRIMARY KEY, 
     id_objet INT, 
     nom_image VARCHAR(100),
@@ -40,7 +37,6 @@ CREATE TABLE final_project_images_objet(
     FOREIGN KEY(id_objet) REFERENCES final_project_objet(id_objet)
 );
 
-CREATE TABLE final_project_emprunt(
 CREATE TABLE final_project_emprunt(
     id_emprunt INT AUTO_INCREMENT PRIMARY KEY, 
     id_objet INT, 
@@ -55,20 +51,17 @@ CREATE TABLE final_project_emprunt(
 
 
 INSERT INTO final_project_membre (nom , date_de_naissance, genre, email, ville, mdp, image_profil) 
-INSERT INTO final_project_membre (nom , date_de_naissance, genre, email, ville, mdp, image_profil) 
 VALUES ("Rohan", "2007-01-30", 'M', "rohan@gmail.com", "Tana", "rohan", "placeholder"),
         ("Ovy", "2007-03-30", 'M', "ovy@gmail.com", "Tana", "ovy", "placeholder"),
         ("Natha", "2007-09-23", 'M', "natha@gmail.com", "Diego", "natha", "placeholder"),
         ("Gonz", "2007-05-12", 'F', "gonz@gmail.com", "Diego", "gonz", "placeholder");
 
 INSERT INTO final_project_categorie_objet(nom_categorie )
-INSERT INTO final_project_categorie_objet(nom_categorie )
 VALUES ("esthetique"),
     ("bricolage"),
     ("mecanique "),
     ("cuisine ");
 
-INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Peigne dore', 1, 1),
 ('Lisseur cheveux', 1, 1),
@@ -82,7 +75,6 @@ INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Grille-pain', 4, 1);
 
 INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
-INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Gel coiffant', 1, 2),
 ('Brosse a barbe', 1, 2),
 ('Creme visage', 1, 2),
@@ -95,7 +87,6 @@ INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Cocotte-minute', 4, 2);
 
 INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
-INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Parfum', 1, 3),
 ('Creme solaire', 1, 3),
 ('Lotion capillaire', 1, 3),
@@ -107,7 +98,6 @@ INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Four micro-ondes', 4, 3),
 ('Poele antiadhesive', 4, 3);
 
-INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 INSERT INTO final_project_objet(nom_objet, id_categorie, id_membre) VALUES
 ('Mascara', 1, 4),
 ('Fond de teint', 1, 4),
@@ -144,7 +134,6 @@ INSERT INTO final_project_emprunt(id_objet, id_membre, date_emprunt, date_retour
 (31, 1, '2025-07-07', '2025-07-14');  
 
 
-CREATE VIEW final_project_v_liste_objet AS
 CREATE VIEW final_project_v_liste_objet AS
 SELECT 
     o.id_objet AS objet_id,

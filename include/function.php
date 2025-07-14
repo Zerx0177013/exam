@@ -51,7 +51,7 @@ function getListeObjet($id_categorie, $nom = null, $disponible_seulement = false
         $where = "WHERE " . implode(" AND ", $conditions);
     }
 
-    $query = "SELECT o.id_objet, o.nom_objet, o.id_categorie, e.date_retour
+    $query = "SELECT o.id_membre,o.id_objet, o.nom_objet, o.id_categorie, e.date_retour
               FROM final_project_objet o
               LEFT JOIN final_project_emprunt e ON o.id_objet = e.id_objet
               $where
@@ -123,6 +123,28 @@ function addEverythingObjet($id_user, $nomObjet, $id_categorie, $nom_image){
     $id_objet = mysqli_insert_id($bdd); 
     addImageToObjet($id_objet, $nom_image, $bdd);
 }
+function getMembreById($id_membre) {
+    $bdd = connexion();
+    $query = "SELECT * FROM final_project_membre WHERE id_membre = $id_membre";
+    return mysqli_query($bdd, $query);
+}
 
+function getObjetsByMembreGroupedByCategorie($id_membre) {
+    $bdd = connexion();
+    $query = "SELECT o.id_objet, o.nom_objet, o.id_categorie, c.nom_categorie
+              FROM final_project_objet o
+              JOIN final_project_categorie_objet c ON o.id_categorie = c.id_categorie
+              WHERE o.id_membre = $id_membre
+              ORDER BY c.nom_categorie, o.nom_objet";
+    return mysqli_query($bdd, $query);
+}
+
+function getNombreObjetsByMembre($id_membre) {
+    $bdd = connexion();
+    $query = "SELECT COUNT(*) as total FROM final_project_objet WHERE id_membre = $id_membre";
+    $result = mysqli_query($bdd, $query);
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
+}
 
 ?>
