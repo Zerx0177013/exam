@@ -121,3 +121,27 @@ INSERT INTO emprunt(id_objet, id_membre, date_emprunt, date_retour) VALUES
 (22, 2, '2025-07-05', '2025-07-12'),  -- Natha → Ovy
 (23, 4, '2025-07-06', '2025-07-13'),  -- Natha → Gonz
 (31, 1, '2025-07-07', '2025-07-14');  -- Gonz → Rohan
+
+
+
+
+CREATE VIEW v_liste_objet AS
+SELECT 
+    o.id_objet AS objet_id,
+    o.nom_objet,
+    o.id_categorie,
+    o.id_membre AS proprietaire_id,
+
+    emprunt.id_emprunt,
+    emprunt.id_membre AS emprunteur_id,
+    emprunt.date_emprunt,
+    emprunt.date_retour
+
+FROM objet AS o
+JOIN emprunt ON o.id_objet = emprunt.id_objet;
+
+SELECT * FROM v_liste_objet;
+
+
+SELECT * FROM v_liste_objet
+JOIN images_objet as io on objet_id = io.id_objet;

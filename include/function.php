@@ -28,4 +28,15 @@ function inscription ($email,$mdp,$nom,$date,$ville,$genre){
 
     return mysqli_query($bdd,$query);
 }
+
+function getListeObjet(){
+    $bdd= connexion();
+    $query = "SELECT * FROM objet ORDER BY nom_objet ASC";
+    return mysqli_query($bdd, $query);
+}
+
+function getProprio($id_objet){
+    
+}
+
 ?>
