@@ -4,7 +4,9 @@ Base de donnees: ok
 
 Pages:
     index: (login et inscription) ok
+    index: (login et inscription) ok
         -fonctionnalites:
+            -formulaire de connexion 
             -formulaire de connexion 
             -page de traitement
             -fonction de gestion
